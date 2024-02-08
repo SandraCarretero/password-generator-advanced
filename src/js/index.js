@@ -3,11 +3,8 @@ import { changeLengthText, generatePassword, getCheckedOptions, updatePasswordLe
 
 
 
-
-
 changeLengthText();
 
-// Eventos
 rangeElement.addEventListener('input', updatePasswordLength);
 buttonElement.addEventListener('click', generatePassword);
 optionsElement.addEventListener('change', getCheckedOptions);
