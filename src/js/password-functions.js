@@ -1,23 +1,16 @@
+import { PASSWORD_OPTIONS } from "./constants";
 import { buttonElement, passwordElement, passwordLengthElement, rangeElement } from "./dom";
+import { generateRandomNumber } from "./utils";
 
-const PASSWORD_OPTIONS = {
-  uppercase: 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ',
-  lowercase: 'abcdefghijklmnñopqrstuvwxyzz',
-  numbers: '0123456789',
-  symbols: '!@#$%^&*()_+{}[]<>',
-  passwordLength: rangeElement.value
-};
+
 
 let alowedCharacters = '';
 let finalPassword = '';
 
-const generateRandomNumber = () => {
-  const randomNumber = Math.floor(Math.random() * alowedCharacters.length);
-  return randomNumber;
-};
+
 
 const changeLengthText = () => {
-  passwordLengthElement.textContent = `${PASSWORD_OPTIONS.passwordLength}`;
+  passwordLengthElement.textContent = `${rangeElement.value}`;
 };
 
 const updatePasswordLength = event => {
@@ -32,7 +25,7 @@ const printFinalPassword = () => {
 const generatePassword = () => {
   finalPassword = '';
   for (let index = 0; index < PASSWORD_OPTIONS.passwordLength; index++) {
-    const randomPosition = generateRandomNumber();
+    const randomPosition = generateRandomNumber(alowedCharacters.length);
     finalPassword += alowedCharacters.charAt(randomPosition);
   }
   printFinalPassword();
@@ -57,6 +50,5 @@ const getCheckedOptions = () => {
   disabledButton(isDisabled);
 };
 
-changeLengthText();
 
-export {updatePasswordLength, generatePassword, getCheckedOptions}
+export {updatePasswordLength, generatePassword, getCheckedOptions, changeLengthText}

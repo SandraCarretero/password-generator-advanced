@@ -1,6 +1,11 @@
 import { buttonElement, optionsElement, rangeElement } from "./dom";
-import { generatePassword, getCheckedOptions, updatePasswordLength } from "./functions";
+import { changeLengthText, generatePassword, getCheckedOptions, updatePasswordLength } from "./password-functions";
 
+
+
+
+
+changeLengthText();
 
 // Eventos
 rangeElement.addEventListener('input', updatePasswordLength);
